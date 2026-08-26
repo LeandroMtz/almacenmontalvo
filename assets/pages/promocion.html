@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="icon" type="image/png" href="../logo.png">
+<link rel="apple-touch-icon" href="../logo.png">
+<title>Promoción · Almacén Montalvo</title>
+<style>
+  :root{
+    --navy:#1B2B4A;
+    --navy-dark:#0f1a2e;
+    --gold:#D4AF37;
+    --gold-light:#E5C95A;
+    --white:#FFFFFF;
+    --silver:#C8C8C8;
+    --cream:#F5F3E8;
+    --beige:#E8DCC4;
+    --text-dark:#1B2B4A;
+    --text-light:#6B6B6B;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    background:var(--cream);
+    color:var(--text-dark);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.5px}
+
+  /* ============================================ */
+  /* TOP NAVIGATION: logo + Inicio + redes */
+  /* ============================================ */
+  .top-nav{
+    background:var(--navy);
+    padding:0.8rem 1.5rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    gap:1rem;
+  }
+  .nav-left{display:flex;align-items:center;gap:0.8rem;min-width:0}
+  .logo-container{display:flex;align-items:center;gap:0.8rem;text-decoration:none;flex-shrink:0}
+  .logo-img{height:40px;width:auto}
+  .logo-text{font-family:Georgia,serif;font-size:1.2rem;color:var(--white);letter-spacing:1px;white-space:nowrap}
+  /* Botón Inicio */
+  .btn-home{
+    background:transparent;color:var(--gold);border:2px solid var(--gold);
+    padding:0.45rem 1rem;font-size:0.78rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:1px;
+    border-radius:4px;transition:all .3s;text-decoration:none;
+    display:inline-flex;align-items:center;gap:0.4rem;white-space:nowrap;
+    flex-shrink:0;
+  }
+  .btn-home:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px)}
+  .btn-home svg{width:14px;height:14px;fill:currentColor}
+  .social-buttons{display:flex;gap:0.8rem}
+  .btn-social{
+    width:40px;height:40px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    text-decoration:none;transition:all .3s;border:2px solid var(--gold);
+    flex-shrink:0;
+  }
+  .btn-social svg{width:20px;height:20px;fill:var(--gold)}
+  .btn-social:hover{background:var(--gold);transform:translateY(-2px)}
+  .btn-social:hover svg{fill:var(--navy)}
+  .btn-whatsapp-social{background:#25D366;border-color:#25D366}
+  .btn-whatsapp-social svg{fill:var(--white)}
+  .btn-whatsapp-social:hover{background:#128C7E}
+  .btn-facebook:hover{background:#1877F2;border-color:#1877F2}
+  .btn-facebook:hover svg{fill:var(--white)}
+
+  /* ============================================ */
+  /* BOTTOM NAVIGATION: Categorías + Más vendidos */
+  /* ============================================ */
+  .bottom-nav{
+    background:var(--navy);padding:0.7rem 1.5rem;
+    display:flex;align-items:center;
+    border-top:1px solid rgba(212,175,55,.3);
+  }
+  .nav-highlights{display:flex;gap:0.8rem;width:100%}
+  .btn-highlight{
+    background:transparent;color:var(--gold);border:2px solid var(--gold);
+    padding:0.5rem 1.2rem;font-size:0.85rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:1px;cursor:pointer;
+    border-radius:4px;transition:all .3s;text-decoration:none;
+    display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
+    white-space:nowrap;flex:1;
+  }
+  .btn-highlight:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px)}
+  .btn-highlight.gold{background:var(--gold);color:var(--navy)}
+  .btn-highlight.gold:hover{background:var(--gold-light)}
+
+  /* Dropdown de categorías */
+  .categories-dropdown{position:relative;flex:1;display:flex}
+  .categories-dropdown .btn-highlight{width:100%}
+  .dropdown-menu{
+    position:absolute;top:calc(100% + 0.5rem);left:0;
+    background:var(--white);min-width:220px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    border-radius:4px;
+    opacity:0;visibility:hidden;transform:translateY(-8px);
+    transition:all .3s;z-index:1001;
+  }
+  .dropdown-menu.active{opacity:1;visibility:visible;transform:translateY(0)}
+  .dropdown-menu a{
+    display:block;padding:0.9rem 1.2rem;color:var(--text-dark);
+    text-decoration:none;border-bottom:1px solid var(--cream);
+    transition:all .3s;font-size:0.85rem;
+  }
+  .dropdown-menu a:hover{background:var(--navy);color:var(--gold)}
+  .dropdown-menu a:last-child{border-bottom:none}
+
+  /* ============================================ */
+  /* HERO DE PROMOCIÓN */
+  /* ============================================ */
+  .promo-hero{
+    background:linear-gradient(135deg, var(--navy) 0%, #2d3f5f 55%, var(--navy-dark) 100%);
+    padding:4rem 1.5rem 8rem;
+    text-align:center;
+    color:var(--white);
+    position:relative;
+    overflow:hidden;
+  }
+  .promo-hero::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 20%, rgba(212,175,55,0.18), transparent 60%);
+  }
+  .promo-hero-inner{position:relative;z-index:2;max-width:800px;margin:0 auto}
+  .promo-tag{
+    display:inline-block;
+    font-size:0.75rem;letter-spacing:3px;text-transform:uppercase;
+    color:var(--gold);font-weight:700;margin-bottom:0.8rem;
+  }
+  .promo-title{
+    font-size:2.8rem;color:var(--white);margin-bottom:1rem;line-height:1.1;
+  }
+  .promo-title em{color:var(--gold);font-style:italic}
+  .promo-desc{
+    font-size:1rem;color:var(--silver);margin-bottom:2rem;line-height:1.6;
+  }
+  .promo-countdown{
+    display:flex;justify-content:center;gap:0.8rem;
+  }
+  .count-box{
+    background:rgba(255,255,255,.08);padding:0.8rem 1rem;text-align:center;
+    min-width:70px;border:1px solid rgba(212,175,55,.3);border-radius:6px;
+  }
+  .count-box .num{font-size:1.6rem;font-family:Georgia,serif;color:var(--gold);display:block;line-height:1.2}
+  .count-box .lbl{font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--silver)}
+
+  /* ============================================ */
+  /* TARJETAS FLOTANTES */
+  /* ============================================ */
+  .promo-cards{
+    max-width:1200px;
+    margin:-5rem auto 0;
+    padding:0 1.5rem 3rem;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1.5rem;
+    position:relative;
+    z-index:5;
+  }
+  .promo-card{
+    background:var(--white);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(15,26,46,0.25);
+    transition:all .4s;
+    display:flex;
+    flex-direction:column;
+    border:1px solid var(--silver);
+  }
+  .promo-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 25px 60px rgba(15,26,46,0.35);
+    border-color:var(--gold);
+  }
+  .promo-img{
+    position:relative;
+    aspect-ratio:4/3;
+    background:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .promo-img img{
+    width:100%;height:100%;object-fit:cover;transition:transform .4s;
+  }
+  .promo-card:hover .promo-img img{transform:scale(1.06)}
+  .promo-img .fallback-icon{
+    position:absolute;width:50%;height:50%;color:var(--navy);display:none;
+  }
+  .promo-img img.error{display:none}
+  .promo-img img.error + .fallback-icon{display:block}
+  .discount-badge{
+    position:absolute;top:12px;right:12px;
+    background:var(--gold);color:var(--navy);
+    font-weight:700;padding:0.4rem 0.8rem;border-radius:6px;
+    font-size:0.9rem;letter-spacing:1px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.25);
+    z-index:2;
+  }
+  .promo-body{
+    padding:1.5rem;display:flex;flex-direction:column;flex-grow:1;
+  }
+  .promo-cat{
+    font-size:0.65rem;color:var(--gold);text-transform:uppercase;
+    letter-spacing:1.5px;margin-bottom:0.4rem;font-weight:600;
+  }
+  .promo-name{
+    font-family:Georgia,serif;font-size:1.2rem;color:var(--navy);
+    margin-bottom:0.5rem;line-height:1.3;
+  }
+  .promo-desc-card{
+    font-size:0.8rem;color:var(--text-light);margin-bottom:1rem;flex-grow:1;
+  }
+  .promo-prices{
+    display:flex;align-items:baseline;gap:0.6rem;margin-bottom:1rem;
+  }
+  .promo-old{
+    text-decoration:line-through;color:var(--silver);font-size:0.95rem;
+  }
+  .promo-new{
+    font-size:1.7rem;color:var(--gold);font-family:Georgia,serif;font-weight:700;
+  }
+  .btn-whatsapp{
+    display:flex;align-items:center;justify-content:center;gap:0.5rem;
+    background:var(--navy);color:var(--white);
+    text-decoration:none;padding:0.8rem;border-radius:4px;
+    font-weight:600;text-transform:uppercase;letter-spacing:1.5px;
+    font-size:0.75rem;transition:all .3s;border:2px solid var(--navy);
+  }
+  .btn-whatsapp:hover{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+  .btn-whatsapp svg{width:16px;height:16px;fill:currentColor}
+
+  /* ============================================ */
+  /* POR QUÉ ALMACÉN MONTALVO */
+  /* ============================================ */
+  .why-section{
+    background:var(--navy-dark);
+    padding:3rem 1.5rem;
+    border-top:1px solid rgba(212,175,55,0.2);
+  }
+  .why-container{max-width:1400px;margin:0 auto}
+  .why-tag{
+    display:inline-block;font-size:0.75rem;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:0.6rem;
+  }
+  .why-title{font-family:Georgia,serif;font-size:2rem;color:var(--white);margin-bottom:2rem;font-weight:400}
+  .why-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:1.5rem}
+  .why-card{
+    background:rgba(27,43,74,0.5);border:1px solid rgba(212,175,55,0.15);
+    border-radius:10px;padding:2rem;transition:all .3s;
+  }
+  .why-card:hover{
+    transform:translateY(-5px);border-color:rgba(212,175,55,0.5);
+    background:rgba(27,43,74,0.85);box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  }
+  .why-icon{
+    width:52px;height:52px;border-radius:12px;
+    background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.3);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:1.5rem;transition:all .3s;
+  }
+  .why-card:hover .why-icon{background:rgba(212,175,55,0.22);transform:scale(1.06)}
+  .why-icon svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .why-card h3{
+    font-family:'Helvetica Neue',Arial,sans-serif;font-size:1.05rem;font-weight:700;
+    color:var(--white);margin-bottom:0.6rem;letter-spacing:0.3px;
+  }
+  .why-card p{font-size:0.9rem;color:var(--silver);line-height:1.6}
+
+  /* ============================================ */
+  /* FOOTER */
+  /* ============================================ */
+  footer{background:var(--navy);color:var(--white);padding:3rem 1.5rem 1.5rem;margin-top:0}
+  .footer-grid{max-width:100%;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+  footer h4{font-family:Georgia,serif;margin-bottom:1rem;color:var(--gold);font-weight:400;font-size:1rem}
+  footer p,footer a{color:var(--silver);font-size:0.85rem;text-decoration:none;display:block;margin-bottom:0.4rem;transition:color .3s}
+  footer a:hover{color:var(--gold)}
+  .footer-bottom{
+    max-width:100%;margin:0 auto;padding-top:1.5rem;
+    border-top:1px solid rgba(255,255,255,.1);
+    text-align:center;color:var(--silver);
+    font-size:0.75rem;letter-spacing:1px;
+  }
+  /* ✅ Footer de 2 líneas */
+  .footer-bottom p{margin-bottom:0}
+  .footer-bottom .footer-main{margin-bottom:0.4rem}
+  .footer-bottom .dev-credit{display:inline}
+  .credit-wrap{white-space:nowrap}
+  .dev-credit{color:#FF6B00;font-weight:700;letter-spacing:1px;transition:all .3s;text-decoration:none}
+  .dev-credit:hover{color:#FF8C3A;text-shadow:0 0 8px rgba(255,107,0,0.4)}
+
+  /* ============================================ */
+  /* RESPONSIVE */
+  /* ============================================ */
+  @media(max-width:1024px){
+    .promo-cards{gap:1rem}
+    .promo-body{padding:1.2rem}
+    .why-grid{gap:1rem}
+    .why-card{padding:1.5rem}
+  }
+
+  @media(max-width:900px){
+    .promo-cards{grid-template-columns:1fr;max-width:500px;margin-top:-4rem}
+  }
+
+  @media(max-width:768px){
+    .top-nav{padding:0.6rem 0.8rem;gap:0.6rem}
+    .nav-left{gap:0.6rem}
+    .logo-img{height:30px}
+    .logo-text{font-size:0.85rem}
+    .btn-home{padding:0.4rem 0.7rem;font-size:0.62rem;gap:0.3rem;border-width:1.5px}
+    .btn-home svg{width:11px;height:11px}
+    .social-buttons{gap:0.4rem}
+    .btn-social{width:32px;height:32px;border-width:1.5px}
+    .btn-social svg{width:15px;height:15px}
+
+    .bottom-nav{padding:0.5rem 0.8rem}
+    .nav-highlights{gap:0.6rem}
+    .btn-highlight{font-size:0.62rem;padding:0.45rem 0.5rem;letter-spacing:0.5px;gap:0.3rem;border-width:1.5px}
+    .btn-highlight svg{width:12px;height:12px}
+    .dropdown-menu{min-width:200px}
+    .dropdown-menu a{padding:0.7rem 1rem;font-size:0.8rem}
+
+    .promo-hero{padding:3rem 1rem 7rem}
+    .promo-title{font-size:2rem}
+    .promo-desc{font-size:0.9rem}
+    .count-box{min-width:60px;padding:0.6rem 0.8rem}
+    .count-box .num{font-size:1.3rem}
+
+    .why-section{padding:2rem 1rem}
+    .why-grid{grid-template-columns:1fr;gap:1rem}
+    .why-card{padding:1.5rem}
+    .why-title{font-size:1.6rem;margin-bottom:1.5rem}
+    .footer-grid{grid-template-columns:1fr;gap:1.5rem;text-align:center}
+  }
+
+  @media(max-width:480px){
+    .logo-img{height:26px}
+    .logo-text{font-size:0.78rem}
+    .btn-home{padding:0.35rem 0.55rem;font-size:0.58rem}
+    .btn-social{width:28px;height:28px}
+    .btn-social svg{width:13px;height:13px}
+    .btn-highlight{font-size:0.58rem;padding:0.4rem 0.4rem}
+    .promo-hero{padding:2.5rem 0.8rem 6rem}
+    .promo-title{font-size:1.6rem}
+    .promo-cards{padding:0 0.8rem 2rem}
+    .promo-body{padding:1rem}
+    .promo-new{font-size:1.4rem}
+    .why-section{padding:1.5rem 0.8rem}
+    .why-card{padding:1.2rem}
+    .why-icon{width:44px;height:44px;margin-bottom:1rem}
+    .why-icon svg{width:20px;height:20px}
+    .why-title{font-size:1.4rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- TOP NAVIGATION: logo + Inicio + redes -->
+<!-- ============================================ -->
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="../../index.html" class="logo-container">
+      <img src="../logo.png" alt="AM Logo" class="logo-img">
+      <span class="logo-text">Almacén Montalvo</span>
+    </a>
+    <a href="../../index.html" class="btn-home" title="Volver a la página principal">
+      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      Inicio
+    </a>
+  </div>
+  <div class="social-buttons">
+    <a href="https://wa.me/5491100000000" target="_blank" class="btn-social btn-whatsapp-social" title="WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M20 3.5A11 11 0 003.5 18L2 22l4-1.5A11 11 0 1020 3.5zM12 20a8 8 0 01-4-1l-3 1 1-3a8 8 0 1111 3z"/></svg>
+    </a>
+    <a href="https://facebook.com" target="_blank" class="btn-social btn-facebook" title="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ============================================ -->
+<!-- BOTTOM NAVIGATION: Categorías + Más vendidos -->
+<!-- ============================================ -->
+<div class="bottom-nav">
+  <div class="nav-highlights">
+    <div class="categories-dropdown">
+      <button class="btn-highlight gold" onclick="toggleDropdown()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+        Categorías
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="margin-left:2px">
+          <path d="M7 10l5 5 5-5z"/>
+        </svg>
+      </button>
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="cocina.html">Cocina</a>
+        <a href="lavado.html">Lavado</a>
+        <a href="clima.html">Clima</a>
+        <a href="energia.html">Energía Solar</a>
+        <a href="otros.html">Otros</a>
+      </div>
+    </div>
+    <a href="mas-vendidos.html" class="btn-highlight">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+      </svg>
+      Más vendidos
+    </a>
+  </div>
+</div>
+
+<!-- HERO DE PROMOCIÓN -->
+<div class="promo-hero">
+  <div class="promo-hero-inner">
+    <span class="promo-tag">Ofertas especiales</span>
+    <h1 class="promo-title">Promoción <em>del mes</em></h1>
+    <p class="promo-desc">Aprovecha estos descuentos exclusivos por tiempo limitado. ¡Solo hasta fin de mes o agotar existencias!</p>
+    <div class="promo-countdown">
+      <div class="count-box"><span class="num" id="d">00</span><span class="lbl">Días</span></div>
+      <div class="count-box"><span class="num" id="h">00</span><span class="lbl">Horas</span></div>
+      <div class="count-box"><span class="num" id="m">00</span><span class="lbl">Min</span></div>
+      <div class="count-box"><span class="num" id="s">00</span><span class="lbl">Seg</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TARJETAS FLOTANTES -->
+<div class="promo-cards">
+  <!-- 1. Refrigerador -->
+  <div class="promo-card">
+    <div class="promo-img">
+      <span class="discount-badge">-30%</span>
+      <img src="../cocina/cocina_1.png" alt="Refrigerador AM Frost" onerror="this.classList.add('error')">
+      <svg class="fallback-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="25" y="15" width="50" height="70" rx="2"/><line x1="25" y1="45" x2="75" y2="45"/><circle cx="40" cy="30" r="2"/><circle cx="40" cy="60" r="2"/>
+      </svg>
+    </div>
+    <div class="promo-body">
+      <div class="promo-cat">Cocina</div>
+      <h3 class="promo-name">Refrigerador AM Frost</h3>
+      <p class="promo-desc-card">No Frost 350L, clase A+++, acero inoxidable con pantalla táctil.</p>
+      <div class="promo-prices">
+        <span class="promo-old">$1.299</span>
+        <span class="promo-new">$899</span>
+      </div>
+      <a href="https://wa.me/5491100000000?text=Hola!%20Quiero%20el%20Refrigerador%20AM%20Frost%20en%20promoci%C3%B3n%20(%24899)" target="_blank" class="btn-whatsapp">
+        <svg viewBox="0 0 24 24"><path d="M20 3.5A11 11 0 003.5 18L2 22l4-1.5A11 11 0 1020 3.5zM12 20a8 8 0 01-4-1l-3 1 1-3a8 8 0 1111 3z"/></svg>
+        Pedir por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- 2. Cafetera -->
+  <div class="promo-card">
+    <div class="promo-img">
+      <span class="discount-badge">-20%</span>
+      <img src="../otros/otros_1.png" alt="Cafetera Espresso Pro" onerror="this.classList.add('error')">
+      <svg class="fallback-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M30 30 L30 70 Q30 75 35 75 L60 75 Q65 75 65 70 L65 30 Z"/><path d="M65 40 Q80 40 80 55 Q80 65 65 65"/>
+      </svg>
+    </div>
+    <div class="promo-body">
+      <div class="promo-cat">Otros</div>
+      <h3 class="promo-name">Cafetera Espresso Pro</h3>
+      <p class="promo-desc-card">15 bar con espumador de leche profesional y depósito de 1.5L.</p>
+      <div class="promo-prices">
+        <span class="promo-old">$361</span>
+        <span class="promo-new">$289</span>
+      </div>
+      <a href="https://wa.me/5491100000000?text=Hola!%20Quiero%20la%20Cafetera%20Espresso%20Pro%20en%20promoci%C3%B3n%20(%24289)" target="_blank" class="btn-whatsapp">
+        <svg viewBox="0 0 24 24"><path d="M20 3.5A11 11 0 003.5 18L2 22l4-1.5A11 11 0 1020 3.5zM12 20a8 8 0 01-4-1l-3 1 1-3a8 8 0 1111 3z"/></svg>
+        Pedir por WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- 3. Kit Solar -->
+  <div class="promo-card">
+    <div class="promo-img">
+      <span class="discount-badge">-17%</span>
+      <img src="../energia/energia_4.png" alt="Kit Solar Completo 3kW" onerror="this.classList.add('error')">
+      <svg class="fallback-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="15" y="35" width="40" height="30" rx="2"/><line x1="28" y1="35" x2="28" y2="65"/><line x1="42" y1="35" x2="42" y2="65"/><line x1="15" y1="50" x2="55" y2="50"/><circle cx="70" cy="40" r="10"/>
+      </svg>
+    </div>
+    <div class="promo-body">
+      <div class="promo-cat">Energía Solar</div>
+      <h3 class="promo-name">Kit Solar Completo 3kW</h3>
+      <p class="promo-desc-card">8 paneles 400W, inversor híbrido, batería y montaje incluido.</p>
+      <div class="promo-prices">
+        <span class="promo-old">$4.200</span>
+        <span class="promo-new">$3.500</span>
+      </div>
+      <a href="https://wa.me/5491100000000?text=Hola!%20Quiero%20el%20Kit%20Solar%203kW%20en%20promoci%C3%B3n%20(%243.500)" target="_blank" class="btn-whatsapp">
+        <svg viewBox="0 0 24 24"><path d="M20 3.5A11 11 0 003.5 18L2 22l4-1.5A11 11 0 1020 3.5zM12 20a8 8 0 01-4-1l-3 1 1-3a8 8 0 1111 3z"/></svg>
+        Pedir por WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- POR QUÉ ALMACÉN MONTALVO -->
+<section class="why-section">
+  <div class="why-container">
+    <span class="why-tag">Nuestra promesa</span>
+    <h2 class="why-title">¿Por qué Almacén Montalvo?</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h3>Calidad Garantizada</h3>
+        <p>Solo vendemos productos de marcas confiables con garantía.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Entrega Rápida</h3>
+        <p>Coordinamos la entrega directamente a tu domicilio.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Multi-moneda</h3>
+        <p>Paga en USD o EUR con transferencia o en efectivo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FOOTER (2 líneas en escritorio) -->
+<!-- ============================================ -->
+<footer id="contacto">
+  <div class="footer-grid">
+    <div>
+      <div class="logo-container" style="margin-bottom:1rem">
+        <img src="../logo.png" alt="AM Logo" class="logo-img" style="height:35px">
+        <span class="logo-text">Almacén Montalvo</span>
+      </div>
+      <p>Electrodomésticos con carácter. Diseñados para quienes entienden que el hogar es una extensión de su estilo.</p>
+    </div>
+    <div>
+      <h4>Tienda</h4>
+      <a href="../../index.html#categorias">Categorías</a>
+      <a href="../../index.html#oferta">Ofertas</a>
+      <a href="../../index.html#productos">Catálogo</a>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <a href="https://wa.me/5491100000000" target="_blank">WhatsApp</a>
+      <p>hola@almacenmontalvo.com</p>
+      <p>+54 11 0000-0000</p>
+    </div>
+    <div>
+      <h4>Horario</h4>
+      <p>Lun–Vie: 9 a 19h</p>
+      <p>Sáb: 10 a 14h</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-main">© 2026 Almacén Montalvo · Desarrollado por
+      <span class="credit-wrap"><a href="https://wa.me/5358045553" target="_blank" class="dev-credit" title="Contactar a LMzFX">LMzFX</a> Ecosistema</span>
+    </p>
+    <p class="footer-sub">Todos los derechos reservados</p>
+  </div>
+</footer>
+
+<script>
+  // Dropdown de categorías
+  function toggleDropdown(){document.getElementById('dropdownMenu').classList.toggle('active')}
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.categories-dropdown'))document.getElementById('dropdownMenu').classList.remove('active');
+  });
+
+  // Countdown hasta fin de mes
+  const now = new Date();
+  const end = new Date(now.getFullYear(), now.getMonth() + 1, 1, 0, 0, 0);
+  function tick(){
+    const diff = end - new Date();
+    if(diff < 0) return;
+    document.getElementById('d').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
+    document.getElementById('h').textContent = String(Math.floor(diff/3600000)%24).padStart(2,'0');
+    document.getElementById('m').textContent = String(Math.floor(diff/60000)%60).padStart(2,'0');
+    document.getElementById('s').textContent = String(Math.floor(diff/1000)%60).padStart(2,'0');
+  }
+  tick(); setInterval(tick,1000);
+</script>
+</body>
+</html>
