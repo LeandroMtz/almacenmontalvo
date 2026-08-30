@@ -51,7 +51,6 @@
   .logo-container{display:flex;align-items:center;gap:0.8rem;text-decoration:none;flex-shrink:0}
   .logo-img{height:40px;width:auto}
   .logo-text{font-family:Georgia,serif;font-size:1.2rem;color:var(--white);letter-spacing:1px;white-space:nowrap}
-  /* Botón Inicio */
   .btn-home{
     background:transparent;color:var(--gold);border:2px solid var(--gold);
     padding:0.45rem 1rem;font-size:0.78rem;font-weight:600;
@@ -98,8 +97,6 @@
   .btn-highlight:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px)}
   .btn-highlight.gold{background:var(--gold);color:var(--navy)}
   .btn-highlight.gold:hover{background:var(--gold-light)}
-
-  /* Dropdown de categorías */
   .categories-dropdown{position:relative;flex:1;display:flex}
   .categories-dropdown .btn-highlight{width:100%}
   .dropdown-menu{
@@ -331,7 +328,7 @@
   }
 
   /* ============================================ */
-  /* FOOTER (2 líneas en escritorio) */
+  /* FOOTER (2 líneas) */
   /* ============================================ */
   footer{
     background:var(--navy);
@@ -454,7 +451,7 @@
 </nav>
 
 <!-- ============================================ -->
-<!-- BOTTOM NAVIGATION: Categorías + Promoción + Más vendidos -->
+<!-- BOTTOM NAVIGATION -->
 <!-- ============================================ -->
 <div class="bottom-nav">
   <div class="nav-highlights">
@@ -493,7 +490,7 @@
 
 <!-- CATEGORY HEADER -->
 <div class="category-header">
-  <p>Refrigeradores, hornos, microondas y todo lo que necesitas para equipar tu cocina con estilo y funcionalidad.</p>
+  <p>Cafeteras, fogones, ollas de presión y freidoras para equipar tu cocina con estilo y funcionalidad.</p>
 </div>
 
 <!-- PRODUCTS CONTAINER -->
@@ -502,7 +499,7 @@
 </div>
 
 <!-- ============================================ -->
-<!-- FOOTER (2 líneas en escritorio) -->
+<!-- FOOTER (2 líneas) -->
 <!-- ============================================ -->
 <footer>
   <p class="footer-main">© 2026 Almacén Montalvo · Desarrollado por
@@ -518,78 +515,34 @@
     if(!e.target.closest('.categories-dropdown'))document.getElementById('dropdownMenu').classList.remove('active');
   });
 
+  /* ✅ PRODUCTOS REALES DE COCINA */
   const products = [
-    {
-      id:1,
-      name:'Refrigerador AM Frost',
-      category:'Cocina',
-      price:899,
-      oldPrice:1299,
-      stock:true,
-      image:'../cocina/cocina_1.png',
-      description:'Refrigerador No Frost de 350L con clase energética A+++. Diseño minimalista en acero inoxidable con pantalla táctil integrada, iluminación LED y compartimentos ajustables. Tecnología de enfriamiento rápido y descongelación automática.',
-      icon:'fridge'
-    },
-    {
-      id:2,
-      name:'Cocina Inducción 5F',
-      category:'Cocina',
-      price:1249,
-      stock:true,
-      image:'../cocina/cocina_2.png',
-      description:'Cocina de inducción con 5 fuegos y horno pirolítico de 70L. Panel de control táctil, temporizador digital, y múltiples programas de cocción. Horno con limpieza automática pirolítica y puerta fría.',
-      icon:'stove'
-    },
-    {
-      id:3,
-      name:'Microondas Digital 25L',
-      category:'Cocina',
-      price:189,
-      stock:true,
-      image:'../cocina/cocina_3.png',
-      description:'Microondas digital de 25 litros con grill de 1000W. 10 niveles de potencia, descongelación automática, y 8 programas preestablecidos. Interior de cerámica fácil de limpiar y plato giratorio de 27cm.',
-      icon:'micro'
-    },
-    {
-      id:4,
-      name:'Horno Eléctrico 60L',
-      category:'Cocina',
-      price:320,
-      oldPrice:380,
-      stock:true,
-      image:'../cocina/cocina_4.png',
-      description:'Horno eléctrico de 60L con convección forzada. Control de temperatura hasta 250°C, temporizador de 120 minutos, y 6 funciones de cocción. Incluye bandeja y rejilla. Interior con iluminación LED.',
-      icon:'oven'
-    },
-    {
-      id:5,
-      name:'Campana Extractora 90cm',
-      category:'Cocina',
-      price:275,
-      stock:false,
-      image:'../cocina/cocina_5.png',
-      description:'Campana extractora de pared de 90cm con motor de 850 m³/h. 3 velocidades, iluminación LED, y filtros de aluminio lavables. Acabado en acero inoxidable y control táctil.',
-      icon:'hood'
-    },
-    {
-      id:6,
-      name:'Lavavajillas 12 Cubiertos',
-      category:'Cocina',
-      price:549,
-      stock:true,
-      image:'../cocina/cocina_6.png',
-      description:'Lavavajillas de 12 cubiertos con 6 programas de lavado. Clase energética A++, nivel de ruido 49dB, y sistema de secado por condensación. Display digital y inicio retardado.',
-      icon:'dishwasher'
-    }
+    { id:1, name:'Cafetera de 6 tazas', category:'Cocina', price:10, stock:true,
+      image:'../cocina/cocina_1.png', description:'', icon:'coffee' },
+    { id:2, name:'Cafetera de 3 tazas', category:'Cocina', price:7, stock:true,
+      image:'../cocina/cocina_2.png', description:'', icon:'coffee' },
+    { id:3, name:'Fogón eléctrico de 2 hornillas', category:'Cocina', price:25, stock:true,
+      image:'../cocina/cocina_3.png', description:'Marca Milexus · Consumo energético 2000W', icon:'stove2' },
+    { id:4, name:'Fogón eléctrico de 1 hornilla', category:'Cocina', price:15, stock:true,
+      image:'../cocina/cocina_4.png', description:'Consumo energético 1000W', icon:'stove1' },
+    { id:5, name:'Cocina infrarroja Koral', category:'Cocina', price:40, stock:true,
+      image:'../cocina/cocina_5.png', description:'Consumo energético 4000W', icon:'infrared' },
+    { id:6, name:'Olla de presión UNIZUKI de 4L', category:'Cocina', price:32, stock:true,
+      image:'../cocina/cocina_6.png', description:'', icon:'pressure' },
+    { id:7, name:'Olla de presión de 11L', category:'Cocina', price:35, stock:true,
+      image:'../cocina/cocina_7.png', description:'', icon:'pressure' },
+    { id:8, name:'Freidora de aire EKO 5.7L', category:'Cocina', price:70, stock:true,
+      image:'../cocina/cocina_8.png',
+      description:'Capacidad 5.7L · Consumo energético 1550W · Temperatura ajustable de 60°C a 200°C', icon:'airfryer' }
   ];
 
   const icons = {
-    fridge:'<rect x="25" y="15" width="50" height="70" rx="2"/><line x1="25" y1="45" x2="75" y2="45"/><circle cx="40" cy="30" r="2"/><circle cx="40" cy="60" r="2"/>',
-    stove:'<rect x="20" y="25" width="60" height="55" rx="2"/><circle cx="35" cy="40" r="4"/><circle cx="65" cy="40" r="4"/><circle cx="35" cy="60" r="4"/><circle cx="65" cy="60" r="4"/><rect x="30" y="75" width="40" height="5" rx="1"/>',
-    micro:'<rect x="18" y="30" width="64" height="40" rx="2"/><rect x="25" y="38" width="40" height="24"/><circle cx="73" cy="45" r="2"/><circle cx="73" cy="55" r="2"/>',
-    oven:'<rect x="20" y="20" width="60" height="60" rx="3"/><rect x="28" y="28" width="44" height="35"/><circle cx="35" cy="72" r="3"/><circle cx="50" cy="72" r="3"/><circle cx="65" cy="72" r="3"/>',
-    hood:'<path d="M20 35 L50 20 L80 35 L80 75 L20 75 Z"/><rect x="35" y="20" width="30" height="10"/><line x1="50" y1="75" x2="50" y2="85"/>',
-    dishwasher:'<rect x="20" y="25" width="60" height="55" rx="2"/><line x1="20" y1="45" x2="80" y2="45"/><circle cx="35" cy="35" r="3"/><circle cx="50" cy="35" r="3"/><circle cx="65" cy="35" r="3"/>'
+    coffee:'<path d="M35 30 L65 30 L62 70 L38 70 Z"/><path d="M40 30 L40 24 L60 24 L60 30"/><path d="M65 40 Q75 40 75 50 Q75 58 65 58"/>',
+    stove2:'<rect x="25" y="35" width="50" height="30" rx="3"/><circle cx="40" cy="50" r="7"/><circle cx="60" cy="50" r="7"/>',
+    stove1:'<rect x="30" y="35" width="40" height="30" rx="3"/><circle cx="50" cy="50" r="8"/>',
+    infrared:'<rect x="25" y="35" width="50" height="30" rx="3"/><circle cx="50" cy="50" r="10"/><circle cx="50" cy="50" r="4"/>',
+    pressure:'<rect x="30" y="42" width="40" height="28" rx="4"/><line x1="28" y1="42" x2="72" y2="42"/><rect x="45" y="32" width="10" height="10" rx="2"/><path d="M30 48 Q24 48 24 54 Q24 60 30 60"/><path d="M70 48 Q76 48 76 54 Q76 60 70 60"/>',
+    airfryer:'<rect x="30" y="20" width="40" height="55" rx="5"/><line x1="30" y1="45" x2="70" y2="45"/><rect x="42" y="52" width="16" height="6" rx="2"/><circle cx="50" cy="32" r="4"/>'
   };
 
   const phone = '5491100000000';
@@ -599,7 +552,11 @@
     grid.innerHTML = products.map(p => {
       const msg = encodeURIComponent(`Hola! Me interesa: ${p.name} ($${p.price})`);
       const oldPriceHtml = p.oldPrice ? `<span class="old-price">$${p.oldPrice}</span>` : '';
-      
+      // ✅ Solo muestra "Ver Más" si hay descripción
+      const descHtml = p.description ? `
+            <button class="btn-view-more" onclick="toggleDescription(${p.id}, this)">Ver Más</button>
+            <div class="product-description" id="desc-${p.id}">${p.description}</div>` : '';
+
       return `
         <div class="product-card">
           <div class="product-image">
@@ -608,15 +565,14 @@
             </span>
             <img src="${p.image}" alt="${p.name}" onerror="this.classList.add('error')">
             <svg class="fallback-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-              ${icons[p.icon] || icons.fridge}
+              ${icons[p.icon] || icons.coffee}
             </svg>
           </div>
           <div class="product-info">
             <div class="product-category">${p.category}</div>
             <h3 class="product-name">${p.name}</h3>
             <div class="product-price">$${p.price}${oldPriceHtml}</div>
-            <button class="btn-view-more" onclick="toggleDescription(${p.id}, this)">Ver Más</button>
-            <div class="product-description" id="desc-${p.id}">${p.description}</div>
+            ${descHtml}
             <a href="${p.stock ? `https://wa.me/${phone}?text=${msg}` : '#'}" 
                target="${p.stock ? '_blank' : '_self'}" 
                class="btn-whatsapp ${p.stock ? '' : 'disabled'}">
