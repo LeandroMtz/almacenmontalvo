@@ -33,9 +33,7 @@
   }
   h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.5px}
 
-  /* ============================================ */
-  /* TOP NAVIGATION: logo + Inicio + redes */
-  /* ============================================ */
+  /* TOP NAVIGATION */
   .top-nav{
     background:var(--navy);
     padding:0.8rem 1.5rem;
@@ -51,7 +49,6 @@
   .logo-container{display:flex;align-items:center;gap:0.8rem;text-decoration:none;flex-shrink:0}
   .logo-img{height:40px;width:auto}
   .logo-text{font-family:Georgia,serif;font-size:1.2rem;color:var(--white);letter-spacing:1px;white-space:nowrap}
-  /* Botón Inicio */
   .btn-home{
     background:transparent;color:var(--gold);border:2px solid var(--gold);
     padding:0.45rem 1rem;font-size:0.78rem;font-weight:600;
@@ -78,9 +75,7 @@
   .btn-facebook:hover{background:#1877F2;border-color:#1877F2}
   .btn-facebook:hover svg{fill:var(--white)}
 
-  /* ============================================ */
   /* BOTTOM NAVIGATION */
-  /* ============================================ */
   .bottom-nav{
     background:var(--navy);padding:0.7rem 1.5rem;
     display:flex;align-items:center;
@@ -98,8 +93,6 @@
   .btn-highlight:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px)}
   .btn-highlight.gold{background:var(--gold);color:var(--navy)}
   .btn-highlight.gold:hover{background:var(--gold-light)}
-
-  /* Dropdown de categorías */
   .categories-dropdown{position:relative;flex:1;display:flex}
   .categories-dropdown .btn-highlight{width:100%}
   .dropdown-menu{
@@ -120,9 +113,7 @@
   .dropdown-menu a:last-child{border-bottom:none}
   .dropdown-menu a.current{background:var(--navy);color:var(--gold);font-weight:600}
 
-  /* ============================================ */
   /* CATEGORY HEADER */
-  /* ============================================ */
   .category-header{
     background:linear-gradient(135deg, var(--navy) 0%, #2d3f5f 100%);
     color:var(--white);
@@ -138,9 +129,7 @@
     line-height:1.5;
   }
 
-  /* ============================================ */
   /* PRODUCTS GRID */
-  /* ============================================ */
   .container{
     max-width:1400px;
     margin:0 auto;
@@ -330,9 +319,7 @@
     pointer-events:none;
   }
 
-  /* ============================================ */
-  /* FOOTER (2 líneas en escritorio) */
-  /* ============================================ */
+  /* FOOTER (2 líneas) */
   footer{
     background:var(--navy);
     color:var(--white);
@@ -365,9 +352,7 @@
     text-shadow:0 0 8px rgba(255,107,0,0.4);
   }
 
-  /* ============================================ */
   /* RESPONSIVE */
-  /* ============================================ */
   @media(max-width:768px){
     .top-nav{padding:0.6rem 0.8rem;gap:0.6rem}
     .nav-left{gap:0.6rem}
@@ -429,9 +414,7 @@
 </head>
 <body>
 
-<!-- ============================================ -->
-<!-- TOP NAVIGATION: logo + Inicio + redes -->
-<!-- ============================================ -->
+<!-- TOP NAVIGATION -->
 <nav class="top-nav">
   <div class="nav-left">
     <a href="../../index.html" class="logo-container">
@@ -453,9 +436,7 @@
   </div>
 </nav>
 
-<!-- ============================================ -->
-<!-- BOTTOM NAVIGATION: Categorías + Promoción + Más vendidos -->
-<!-- ============================================ -->
+<!-- BOTTOM NAVIGATION -->
 <div class="bottom-nav">
   <div class="nav-highlights">
     <div class="categories-dropdown">
@@ -493,7 +474,7 @@
 
 <!-- CATEGORY HEADER -->
 <div class="category-header">
-  <p>Aires acondicionados, calefactores y ventiladores. Disfruta de la temperatura perfecta en tu hogar durante todo el año.</p>
+  <p>Aires acondicionados y soluciones de climatización para disfrutar de la temperatura perfecta todo el año.</p>
 </div>
 
 <!-- PRODUCTS CONTAINER -->
@@ -501,9 +482,7 @@
   <div class="products-grid" id="productsGrid"></div>
 </div>
 
-<!-- ============================================ -->
-<!-- FOOTER (2 líneas en escritorio) -->
-<!-- ============================================ -->
+<!-- FOOTER (2 líneas) -->
 <footer>
   <p class="footer-main">© 2026 Almacén Montalvo · Desarrollado por
     <span class="credit-wrap"><a href="https://wa.me/5358045553" target="_blank" class="dev-credit" title="Contactar a LMzFX">LMzFX</a> Ecosistema</span>
@@ -518,77 +497,14 @@
     if(!e.target.closest('.categories-dropdown'))document.getElementById('dropdownMenu').classList.remove('active');
   });
 
+  /* ✅ PRODUCTO REAL DE CLIMA */
   const products = [
-    {
-      id:1,
-      name:'Aire Split Inverter 3000F',
-      category:'Clima',
-      price:549,
-      stock:true,
-      image:'../clima/clima_1.png',
-      description:'Aire acondicionado split inverter de 3000 frigorías. Frío/calor, WiFi integrado, clase energética A++. Nivel de ruido 19dB, filtro antibacteriano, y modo sueño.',
-      icon:'ac'
-    },
-    {
-      id:2,
-      name:'Aire Portátil 2500F',
-      category:'Clima',
-      price:380,
-      stock:true,
-      image:'../clima/clima_2.png',
-      description:'Aire acondicionado portátil de 2500 frigorías con función deshumidificador. Mando a distancia, temporizador 24h, y ruedas para fácil desplazamiento. Kit de ventana incluido.',
-      icon:'acPortable'
-    },
-    {
-      id:3,
-      name:'Calefactor Cerámico 2000W',
-      category:'Clima',
-      price:65,
-      stock:true,
-      image:'../clima/clima_3.png',
-      description:'Calefactor cerámico de 2000W con termostato regulable. 2 niveles de potencia, oscilación automática, y sistema de protección contra sobrecalentamiento. Mando a distancia.',
-      icon:'heater'
-    },
-    {
-      id:4,
-      name:'Deshumidificador 20L/día',
-      category:'Clima',
-      price:220,
-      stock:false,
-      image:'../clima/clima_4.png',
-      description:'Deshumidificador con capacidad de 20L/día. Depósito de 4L, función lavado de ropa, y panel digital. Apagado automático cuando el depósito está lleno.',
-      icon:'dehumidifier'
-    },
-    {
-      id:5,
-      name:'Ventilador de Torre',
-      category:'Clima',
-      price:95,
-      oldPrice:120,
-      stock:true,
-      image:'../clima/clima_5.png',
-      description:'Ventilador de torre de 90cm con mando a distancia. 3 velocidades, oscilación 70°, temporizador 7.5h, y modo nocturno silencioso. Diseño slim que ahorra espacio.',
-      icon:'towerFan'
-    },
-    {
-      id:6,
-      name:'Circulador de Aire 8"',
-      category:'Clima',
-      price:75,
-      stock:true,
-      image:'../clima/clima_6.png',
-      description:'Circulador de aire de 8 pulgadas con 3 velocidades. Cabeza ajustable 360°, ideal para distribuir el aire frío o caliente de forma uniforme. Bajo consumo y alta eficiencia.',
-      icon:'circulator'
-    }
+    { id:1, name:'Split Milexus de 1 tonelada', category:'Clima', price:285, stock:true,
+      image:'../clima/clima_1.png', description:'', icon:'split' }
   ];
 
   const icons = {
-    ac:'<rect x="15" y="35" width="70" height="25" rx="3"/><line x1="25" y1="65" x2="25" y2="75"/><line x1="50" y1="65" x2="50" y2="75"/><line x1="75" y1="65" x2="75" y2="75"/>',
-    acPortable:'<rect x="25" y="20" width="50" height="60" rx="2"/><circle cx="40" cy="40" r="8"/><circle cx="60" cy="40" r="8"/><line x1="75" y1="30" x2="85" y2="30"/>',
-    heater:'<rect x="30" y="25" width="40" height="55" rx="2"/><line x1="35" y1="35" x2="65" y2="35"/><line x1="35" y1="45" x2="65" y2="45"/><line x1="35" y1="55" x2="65" y2="55"/><line x1="35" y1="65" x2="65" y2="65"/>',
-    dehumidifier:'<rect x="25" y="20" width="50" height="60" rx="2"/><path d="M35 35 Q50 50 65 35"/><circle cx="50" cy="65" r="3"/>',
-    towerFan:'<rect x="38" y="15" width="24" height="60" rx="4"/><line x1="44" y1="25" x2="56" y2="25"/><line x1="44" y1="35" x2="56" y2="35"/><line x1="44" y1="45" x2="56" y2="45"/><line x1="44" y1="55" x2="56" y2="55"/><line x1="35" y1="80" x2="65" y2="80"/>',
-    circulator:'<circle cx="50" cy="45" r="20"/><circle cx="50" cy="45" r="4"/><line x1="50" y1="65" x2="50" y2="80"/><line x1="35" y1="80" x2="65" y2="80"/>'
+    split:'<rect x="15" y="35" width="70" height="25" rx="3"/><line x1="25" y1="65" x2="25" y2="75"/><line x1="50" y1="65" x2="50" y2="75"/><line x1="75" y1="65" x2="75" y2="75"/><line x1="22" y1="52" x2="78" y2="52"/>'
   };
 
   const phone = '5491100000000';
@@ -598,7 +514,10 @@
     grid.innerHTML = products.map(p => {
       const msg = encodeURIComponent(`Hola! Me interesa: ${p.name} ($${p.price})`);
       const oldPriceHtml = p.oldPrice ? `<span class="old-price">$${p.oldPrice}</span>` : '';
-      
+      const descHtml = p.description ? `
+            <button class="btn-view-more" onclick="toggleDescription(${p.id}, this)">Ver Más</button>
+            <div class="product-description" id="desc-${p.id}">${p.description}</div>` : '';
+
       return `
         <div class="product-card">
           <div class="product-image">
@@ -607,15 +526,14 @@
             </span>
             <img src="${p.image}" alt="${p.name}" onerror="this.classList.add('error')">
             <svg class="fallback-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-              ${icons[p.icon] || icons.ac}
+              ${icons[p.icon] || icons.split}
             </svg>
           </div>
           <div class="product-info">
             <div class="product-category">${p.category}</div>
             <h3 class="product-name">${p.name}</h3>
             <div class="product-price">$${p.price}${oldPriceHtml}</div>
-            <button class="btn-view-more" onclick="toggleDescription(${p.id}, this)">Ver Más</button>
-            <div class="product-description" id="desc-${p.id}">${p.description}</div>
+            ${descHtml}
             <a href="${p.stock ? `https://wa.me/${phone}?text=${msg}` : '#'}" 
                target="${p.stock ? '_blank' : '_self'}" 
                class="btn-whatsapp ${p.stock ? '' : 'disabled'}">
