@@ -88,9 +88,7 @@
   .benefit-card h3{font-family:'Helvetica Neue',Arial,sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem}
   .benefit-card p{font-size:0.85rem;color:var(--text-light)}
 
-  /* ============================================ */
   /* PRODUCTOS MAYORISTAS */
-  /* ============================================ */
   .wm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
   .wm-card{background:var(--white);border:1px solid var(--silver);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:all .3s}
   .wm-card:hover{transform:translateY(-5px);border-color:var(--green);box-shadow:0 12px 30px rgba(27,43,74,0.15)}
@@ -104,9 +102,10 @@
   .wm-body{padding:1.2rem;display:flex;flex-direction:column;flex-grow:1}
   .wm-body h3{font-size:1rem;color:var(--navy);margin-bottom:0.4rem;line-height:1.3}
   .wm-body p{font-size:0.8rem;color:var(--text-light);margin-bottom:0.8rem;flex-grow:1}
-  .wm-price{font-size:1.4rem;color:var(--green);font-family:Georgia,serif;font-weight:700;margin-bottom:0.8rem}
+  .wm-price{font-size:1.4rem;color:var(--green);font-family:Georgia,serif;font-weight:700;margin-bottom:0.3rem}
   .wm-price span{font-size:0.72rem;color:var(--text-light);font-family:'Helvetica Neue',Arial,sans-serif;font-weight:400}
-  .btn-wm{display:flex;align-items:center;justify-content:center;gap:0.5rem;background:var(--navy);color:var(--white);text-decoration:none;padding:0.7rem;border-radius:3px;font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:0.72rem;transition:all .3s;border:1.5px solid var(--navy);font-family:'Helvetica Neue',Arial,sans-serif}
+  .wm-extra{font-size:0.75rem;color:var(--green);font-weight:600;margin-bottom:0.8rem}
+  .btn-wm{display:flex;align-items:center;justify-content:center;gap:0.5rem;background:var(--navy);color:var(--white);text-decoration:none;padding:0.7rem;border-radius:3px;font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:0.72rem;transition:all .3s;border:1.5px solid var(--navy);font-family:'Helvetica Neue',Arial,sans-serif;margin-top:auto}
   .btn-wm:hover{background:var(--green);border-color:var(--green)}
   .btn-wm svg{width:15px;height:15px;fill:currentColor}
 
@@ -265,18 +264,16 @@
   </div>
 </div>
 
-<!-- ============================================ -->
-<!-- HERO (texto corregido) -->
-<!-- ============================================ -->
+<!-- HERO -->
 <div class="mayorista-hero">
   <div class="mayorista-hero-inner">
     <span class="hero-tag">Negocios · Volumen</span>
-    <span class="hero-pill">Precios por cantidad</span>
+    <span class="hero-pill">Precios en CUP</span>
     <h1 class="mayorista-title">Mercado <em>Mayorista</em></h1>
     <p class="mayorista-desc">Abastece tu negocio con productos de calidad a precios escalonados. Mientras más compras, más ahorras.</p>
     <div class="mayorista-stats">
       <div class="stat-box"><span class="num">+100</span><span class="lbl">Negocios</span></div>
-      <div class="stat-box"><span class="num">-18%</span><span class="lbl">Descuento máx</span></div>
+      <div class="stat-box"><span class="num">CUP</span><span class="lbl">Moneda local</span></div>
       <div class="stat-box"><span class="num">24h</span><span class="lbl">Entrega</span></div>
     </div>
   </div>
@@ -313,19 +310,17 @@
   </div>
 </section>
 
-<!-- ============================================ -->
-<!-- PRODUCTOS MAYORISTAS (nueva sección) -->
-<!-- ============================================ -->
+<!-- PRODUCTOS MAYORISTAS -->
 <section class="m-section" style="padding-top:0" id="productos-mayoristas">
   <div class="m-header">
     <span class="tag">Alimentos y bebidas</span>
     <h2>Productos Mayoristas</h2>
-    <p>Selección de alimentos y bebidas listos para abastecer tu inventario. Precios por caja cerrada.</p>
+    <p>Precios en CUP con escalas mayoristas. Abastece tu inventario con productos de alta rotación.</p>
   </div>
   <div class="wm-grid" id="wmGrid"></div>
 </section>
 
-<!-- NIVELES DE DESCUENTO -->
+<!-- NIVELES -->
 <section class="m-section" style="padding-top:0">
   <div class="m-header">
     <span class="tag">Escalas por pedido</span>
@@ -399,42 +394,43 @@
     if(!e.target.closest('.categories-dropdown'))document.getElementById('dropdownMenu').classList.remove('active');
   });
 
-  /* Productos mayoristas (alimentos y bebidas) */
+  /* ✅ PRODUCTOS MAYORISTAS ANALIZADOS (CUP) */
   const wmProducts = [
-    {name:'Aceite de Girasol 1L', pack:'Caja ×20', price:38, image:'../mayorista/mayorista_1.png', icon:'oil',
-     desc:'Caja de 20 botellas de 1L. Aceite 100% puro de girasol, ideal para reventa en minimercados y cafeterías.'},
-    {name:'Arroz Blanco Grado 1', pack:'Saco ×10 (5kg)', price:45, image:'../mayorista/mayorista_2.png', icon:'rice',
-     desc:'10 sacos de 5kg. Arroz blanco grado 1 de alta demanda y rotación garantizada.'},
-    {name:'Café Torrado Molido 1kg', pack:'Caja ×12', price:60, image:'../mayorista/mayorista_3.png', icon:'coffee',
-     desc:'Caja de 12 paquetes de 1kg. Café torrado de tueste medio con aroma intenso.'},
-    {name:'Malta 350ml', pack:'Caja ×24', price:22, image:'../mayorista/mayorista_4.png', icon:'can',
-     desc:'Caja de 24 latas de 350ml. Refresco de malta tradicional, favorito del público.'},
-    {name:'Agua Mineral 5L', pack:'Pack ×4', price:18, image:'../mayorista/mayorista_5.png', icon:'water',
-     desc:'Pack de 4 garrafas de 5L. Agua mineral de manantial, sellada y certificada.'},
-    {name:'Cerveza Lager 330ml', pack:'Caja ×24', price:30, image:'../mayorista/mayorista_6.png', icon:'beer',
-     desc:'Caja de 24 latas de 330ml. Cerveza lager refrescante, alta rotación en verano.'},
-    {name:'Vino Tinto de Mesa', pack:'Caja ×12', price:55, image:'../mayorista/mayorista_7.png', icon:'wine',
-     desc:'Caja de 12 botellas de 750ml. Vino tinto de mesa, perfecto para gastronomía.'},
-    {name:'Spaghetti 400g', pack:'Caja ×40', price:28, image:'../mayorista/mayorista_8.png', icon:'pasta',
-     desc:'Caja de 40 paquetes de 400g. Pasta de sémola de trigo duro, cocción al dente.'}
+    { name:'Aceite Vegetal Marina', pack:'Tanque 18L', big:'68400 CUP', unit:'',
+      desc:'3800 CUP por litro',
+      extra:'Desde 10 tanques: 66600 CUP (3700 CUP/Lt) · mensajería incluida',
+      image:'../mayorista/mayorista_1.png', icon:'oil' },
+    { name:'Sorbetos Pajucara', pack:'Caja ×30', big:'8700 CUP', unit:'/ caja',
+      desc:'Sabores: chocolate, chocolate blanco, fresa y vainilla · Compra mínima: 1 caja',
+      extra:'', image:'../mayorista/mayorista_2.png', icon:'icecream' },
+    { name:'Malta Guajira 1500ml', pack:'Estuche ×6', big:'8400 CUP', unit:'/ estuche',
+      desc:'1400 CUP por unidad · Compra mínima: 5 estuches',
+      extra:'', image:'../mayorista/mayorista_3.png', icon:'malta' },
+    { name:'Azúcar Blanca', pack:'Saco 25kg', big:'26500 CUP', unit:'',
+      desc:'',
+      extra:'Desde 10 sacos: mensajería incluida',
+      image:'../mayorista/mayorista_4.png', icon:'sugar' },
+    { name:'Yogourt FRU FRU', pack:'Caja ×20', big:'6000 CUP', unit:'/ caja',
+      desc:'4 sabores surtidos',
+      extra:'Desde 10 cajas: mensajería incluida',
+      image:'../mayorista/mayorista_5.png', icon:'yogurt' }
   ];
 
   const wmIcons = {
-    oil:'<path d="M45 20 L55 20 L55 30 L60 40 L60 75 Q60 80 55 80 L45 80 Q40 80 40 75 L40 40 L45 30 Z"/>',
-    rice:'<path d="M35 30 L65 30 L70 75 L30 75 Z"/><line x1="40" y1="42" x2="60" y2="42"/><circle cx="45" cy="55" r="1.5"/><circle cx="55" cy="60" r="1.5"/><circle cx="50" cy="67" r="1.5"/>',
-    coffee:'<path d="M35 40 L35 65 Q35 72 42 72 L58 72 Q65 72 65 65 L65 40 Z"/><path d="M65 45 Q75 45 75 55 Q75 63 65 63"/><line x1="42" y1="30" x2="42" y2="35"/><line x1="50" y1="28" x2="50" y2="35"/><line x1="58" y1="30" x2="58" y2="35"/>',
-    can:'<rect x="40" y="25" width="20" height="50" rx="3"/><line x1="40" y1="32" x2="60" y2="32"/><line x1="40" y1="68" x2="60" y2="68"/>',
-    water:'<path d="M50 25 Q65 45 65 58 A15 15 0 0 1 35 58 Q35 45 50 25 Z"/>',
-    beer:'<path d="M40 30 L40 72 Q40 76 44 76 L60 76 Q64 76 64 72 L64 30 Z"/><path d="M64 38 Q74 38 74 48 Q74 56 64 56"/><line x1="40" y1="38" x2="64" y2="38"/>',
-    wine:'<path d="M40 25 L60 25 Q60 45 50 48 Q40 45 40 25 Z"/><line x1="50" y1="48" x2="50" y2="70"/><line x1="40" y1="74" x2="60" y2="74"/>',
-    pasta:'<rect x="35" y="25" width="30" height="50" rx="3"/><line x1="42" y1="25" x2="42" y2="75"/><line x1="50" y1="25" x2="50" y2="75"/><line x1="58" y1="25" x2="58" y2="75"/>'
+    oil:'<rect x="32" y="28" width="36" height="46" rx="6"/><line x1="32" y1="40" x2="68" y2="40"/><rect x="44" y="22" width="12" height="6" rx="2"/><path d="M40 55 Q50 60 60 55"/>',
+    icecream:'<path d="M40 45 L60 45 L50 70 Z"/><path d="M40 45 Q40 30 50 30 Q60 30 60 45"/>',
+    malta:'<path d="M45 20 L55 20 L55 30 L60 40 L60 75 Q60 80 55 80 L45 80 Q40 80 40 75 L40 40 L45 30 Z"/>',
+    sugar:'<path d="M35 30 L65 30 L70 75 L30 75 Z"/><path d="M40 30 Q50 22 60 30"/><circle cx="45" cy="50" r="1.5"/><circle cx="55" cy="58" r="1.5"/><circle cx="50" cy="66" r="1.5"/>',
+    yogurt:'<path d="M38 35 L62 35 L60 70 L40 70 Z"/><line x1="36" y1="35" x2="64" y2="35"/><line x1="45" y1="28" x2="55" y2="28"/>'
   };
 
   const wmPhone = '5491100000000';
   const wmGrid = document.getElementById('wmGrid');
 
   wmGrid.innerHTML = wmProducts.map(p => {
-    const msg = encodeURIComponent(`Hola! Me interesa: ${p.name} (${p.pack}) $${p.price}`);
+    const msg = encodeURIComponent(`Hola! Me interesa: ${p.name} (${p.big}${p.unit?' '+p.unit:''})`);
+    const extraHtml = p.extra ? `<div class="wm-extra">${p.extra}</div>` : '';
+    const descHtml = p.desc ? `<p>${p.desc}</p>` : '<p></p>';
     return `
       <div class="wm-card">
         <div class="wm-img">
@@ -444,8 +440,9 @@
         </div>
         <div class="wm-body">
           <h3>${p.name}</h3>
-          <p>${p.desc}</p>
-          <div class="wm-price">$${p.price} <span>/ caja</span></div>
+          ${descHtml}
+          <div class="wm-price">${p.big} <span>${p.unit}</span></div>
+          ${extraHtml}
           <a href="https://wa.me/${wmPhone}?text=${msg}" target="_blank" class="btn-wm">
             <svg viewBox="0 0 24 24"><path d="M20 3.5A11 11 0 003.5 18L2 22l4-1.5A11 11 0 1020 3.5zM12 20a8 8 0 01-4-1l-3 1 1-3a8 8 0 1111 3z"/></svg>
             Pedir por WhatsApp
